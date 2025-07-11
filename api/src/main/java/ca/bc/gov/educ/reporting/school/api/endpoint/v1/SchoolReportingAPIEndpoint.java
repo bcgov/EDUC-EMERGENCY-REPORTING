@@ -16,7 +16,7 @@ import java.util.List;
 public interface SchoolReportingAPIEndpoint {
 
   @GetMapping("/schools")
-  @PreAuthorize("hasAuthority('SCOPE_READ_SDC_MINISTRY_REPORTS')")
+  @PreAuthorize("hasAuthority('SCOPE_READ_EMERGENCY_REPORTS')")
   @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "OK")})
   @Transactional(readOnly = true)
   @Tag(name = "School Entity", description = "Endpoints for school entity.")
