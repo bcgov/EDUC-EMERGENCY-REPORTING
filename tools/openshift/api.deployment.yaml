@@ -39,7 +39,7 @@ objects:
                   protocol: TCP
               envFrom:
                 - configMapRef:
-                    name: reporting-api-config-map
+                    name: emergency-reporting-api-config-map
               env:
                 - name: DB_JDBC_CONNECT_STRING
                   value: "${DB_JDBC_CONNECT_STRING}"
