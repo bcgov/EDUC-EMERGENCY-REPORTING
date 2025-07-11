@@ -20,14 +20,14 @@ env:
   # 🖊️ EDIT to specify custom tags for the container image, or default tags will be generated below.
   IMAGE_TAGS: ""
 
-  SPRING_BOOT_IMAGE_NAME: reporting-api-master
+  SPRING_BOOT_IMAGE_NAME: emergency-reporting-api-master
   DOCKER_ARTIFACTORY_REPO: artifacts.developer.gov.bc.ca/docker-remote
   ARTIFACTORY_REPO: artifacts.developer.gov.bc.ca
 
-  APP_NAME: 'reporting-api'
-  REPO_NAME: "educ-reporting"
+  APP_NAME: 'emergency-reporting-api'
+  REPO_NAME: "educ-emergency-reporting"
   BRANCH: "master"
-  APP_NAME_FULL: "reporting-api-master"
+  APP_NAME_FULL: "emergency-reporting-api-master"
   NAMESPACE: ${{ secrets.CLIENT_NAMESPACE_NO_ENV }}
   COMMON_NAMESPACE: ${{ secrets.COMMON_NAMESPACE_NO_ENV }}
   TAG: "latest"
