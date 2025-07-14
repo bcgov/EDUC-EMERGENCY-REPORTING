@@ -18,21 +18,12 @@ public class ApplicationProperties {
           .setCorePoolSize(1).setMaximumPoolSize(1).setKeepAliveTime(Duration.ofSeconds(60)).build();
 
   public static final String EMERGENCY_REPORTING_API = "EMERGENCY-REPORTING-API";
-  public static final String STREAM_NAME= "GRAD_SCHOOL_EVENTS";
   public static final String CORRELATION_ID = "correlationID";
-  public static final String API_NAME = "GRAD_SCHOOL_API";
+  public static final String API_NAME = "EMERGENCY-REPORTING-API";
   /**
    * The Stan url.
    */
 
-  @Value("${nats.maxReconnect}")
-  Integer natsMaxReconnect;
-
-  @Value("${nats.server}")
-  private String server;
-
-  @Value("${nats.connectionName}")
-  private String connectionName;
 
   @Value("${url.api.institute}")
   private String instituteApiURL;
