@@ -21,7 +21,7 @@ env:
   # 🖊️ EDIT to specify custom tags for the container image, or default tags will be generated below.
   IMAGE_TAGS: ""
 
-  SPRING_BOOT_IMAGE_NAME: challenge-reports-api-master
+  SPRING_BOOT_IMAGE_NAME: emergency-reporting-api-master
   DOCKER_ARTIFACTORY_REPO: artifacts.developer.gov.bc.ca/docker-remote
   ARTIFACTORY_REPO: artifacts.developer.gov.bc.ca
 
