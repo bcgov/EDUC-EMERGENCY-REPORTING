@@ -1,0 +1,37 @@
+kind: GatewayService
+name: emergency-reporting-dev
+tags: [ns.emer-report-api]
+host: emergency-reporting-api-master.afffe0-dev.svc.cluster.local
+port: 8080
+protocol: http
+routes:
+  - name: emergency-reporting-api-dev
+    tags: [ns.emer-report-api]
+    hosts:
+      - emergency-reporting-api.dev.api.gov.bc.ca
+---
+kind: GatewayService
+name: emergency-reporting-test
+tags: [ns.emer-report-api]
+host: emergency-reporting-api-master.afffe0-test.svc.cluster.local
+port: 8080
+protocol: http
+routes:
+  - name: emergency-reporting-api-test
+    tags: [ns.emer-report-api]
+    hosts:
+      - emergency-reporting-api.test.api.gov.bc.ca
+---
+kind: Product
+name: educ-emergency-reporting API
+environments:
+  - name: dev
+    active: false
+    approval: false
+    flow: public
+    services: [emergency-reporting-dev]
+  - name: test
+    active: false
+    approval: false
+    flow: public
+    services: [emergency-reporting-test]
