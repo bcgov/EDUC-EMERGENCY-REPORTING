@@ -32,7 +32,7 @@ routes:
   - name: emergency-reporting-api-prod
     tags: [ns.emer-report-api]
     hosts:
-      - emergency-reporting-api.prod.api.gov.bc.ca
+      - emergency-reporting-api.api.gov.bc.ca
 ---
 kind: Product
 name: educ-emergency-reporting API
