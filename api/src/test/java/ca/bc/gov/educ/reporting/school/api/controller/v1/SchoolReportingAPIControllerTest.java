@@ -46,7 +46,7 @@ public class SchoolReportingAPIControllerTest extends BaseSchoolReportingAPITest
 
     @Test
     void getAllSchools_shouldReturnSchoolsWithHeadcounts() throws Exception {
-        final GrantedAuthority grantedAuthority = () -> "SCOPE_READ_SDC_MINISTRY_REPORTS";
+        final GrantedAuthority grantedAuthority = () -> "SCOPE_READ_EMERGENCY_REPORTS";
         final SecurityMockMvcRequestPostProcessors.OidcLoginRequestPostProcessor mockAuthority = oidcLogin().authorities(grantedAuthority);
         School school = new School();
         school.setSchoolId("123");
@@ -66,7 +66,7 @@ public class SchoolReportingAPIControllerTest extends BaseSchoolReportingAPITest
         }
    @Test
     void getAllSchools_shouldReturnEmptyListWhenNoSchoolsExist() throws Exception {
-        final GrantedAuthority grantedAuthority = () -> "SCOPE_READ_SDC_MINISTRY_REPORTS";
+        final GrantedAuthority grantedAuthority = () -> "SCOPE_READ_EMERGENCY_REPORTS";
         final SecurityMockMvcRequestPostProcessors.OidcLoginRequestPostProcessor mockAuthority = oidcLogin().authorities(grantedAuthority);
 
         Mockito.when(service.getAllSchoolsWithHeadcounts()).thenReturn(Collections.emptyList());
@@ -81,7 +81,7 @@ public class SchoolReportingAPIControllerTest extends BaseSchoolReportingAPITest
     }
     @Test
     void getAllSchools_shouldReturnSchoolsWithNullHeadcounts() throws Exception {
-        final GrantedAuthority grantedAuthority = () -> "SCOPE_READ_SDC_MINISTRY_REPORTS";
+        final GrantedAuthority grantedAuthority = () -> "SCOPE_READ_EMERGENCY_REPORTS";
         final SecurityMockMvcRequestPostProcessors.OidcLoginRequestPostProcessor mockAuthority = oidcLogin().authorities(grantedAuthority);
         School school = new School();
         school.setSchoolId("456");
@@ -99,6 +99,18 @@ public class SchoolReportingAPIControllerTest extends BaseSchoolReportingAPITest
         );
         assertThat(summary).isNotNull();
         assertThat(summary.get(0).getHeadCount()).isNull();
+    }
+
+    @Test
+    void getAllSchools_shouldReturnForbiddenWithoutEmergencyReportsAuthority() throws Exception {
+        final GrantedAuthority grantedAuthority = () -> "SCOPE_READ_SDC_MINISTRY_REPORTS";
+
+        this.mockMvc.perform(get(URL.BASE_URL + "/schools")
+                .with(oidcLogin().authorities(grantedAuthority))
+                .contentType(APPLICATION_JSON))
+                .andExpect(status().isForbidden());
+
+        Mockito.verifyNoInteractions(service);
     }
 
 }
